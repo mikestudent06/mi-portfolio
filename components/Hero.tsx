@@ -8,13 +8,13 @@ const Hero = () => {
   return (
     <div className="relative w-full overflow-hidden pb-10 pt-20 bg-gradient-to-b from-white to-gray-50 dark:from-black dark:to-gray-900">
       {/* Animated Spotlights */}
-      <div className="absolute inset-0 pointer-events-none">
+      <div className="absolute left-0 right-0 inset-0 pointer-events-none">
         <Spotlight
           className="animate-pulse opacity-50 -top-40 left-10 md:-left-32 md:-top-20 h-screen"
           fill="white"
         />
         <Spotlight
-          className="animate-[pulse_3s_infinite] opacity-60 h-[80vh] w-[50vw] top-10"
+          className="animate-[pulse_3s_infinite] opacity-60 h-[80vh] w-[50vw]  top-10"
           fill="purple"
         />
         <Spotlight
@@ -24,7 +24,7 @@ const Hero = () => {
       </div>
 
       {/* Radial Gradient Overlay */}
-      <div className="absolute inset-0 flex items-center justify-center">
+      <div className="absolute left-0 right-0 inset-0 flex items-center justify-center">
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]" />
       </div>
 
