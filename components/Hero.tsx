@@ -6,38 +6,39 @@ import ProfilePictureSection from "./ProfilePictureSection";
 
 const Hero = () => {
   return (
-    <div className="pb-10 pt-20 w-full overflow-x-hidden">
-      <div>
+    <div className="relative w-full overflow-hidden pb-10 pt-20 bg-gradient-to-b from-white to-gray-50 dark:from-black dark:to-gray-900">
+      {/* Animated Spotlights */}
+      <div className="absolute inset-0 pointer-events-none">
         <Spotlight
-          className="-top-40 left-10 md:-left-32 md:-top-20 h-screen"
+          className="animate-pulse opacity-50 -top-40 left-10 md:-left-32 md:-top-20 h-screen"
           fill="white"
         />
-        <Spotlight className="h-[80vh] w-[50vw] top-10" fill="purple" />
-        <Spotlight className="left-80 top-28 h-[80vh] w-[50vw]" fill="blue" />
-      </div>
-
-      <div
-        className="h-screen w-full dark:bg-black-100 bg-white dark:bg-grid-white/[0.03] bg-grid-black-100/[0.2]
-       absolute top-0 left-0 flex items-center justify-center"
-      >
-        {/* Radial gradient for the container to give a faded look */}
-        <div
-          // chnage the bg to bg-black-100, so it matches the bg color and will blend in
-          className="absolute pointer-events-none inset-0 flex items-center justify-center dark:bg-black-100
-         bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"
+        <Spotlight
+          className="animate-[pulse_3s_infinite] opacity-60 h-[80vh] w-[50vw] top-10"
+          fill="purple"
+        />
+        <Spotlight
+          className="animate-[pulse_2.5s_infinite] opacity-50 left-80 top-28 h-[80vh] w-[50vw]"
+          fill="blue"
         />
       </div>
 
-      <div className="flex justify-center relative my-20 z-10">
-        <div className="max-w-[89vw] md:max-w-2xl lg:max-w-[60vw] flex flex-col justify-center items-center">
-          <h2 className="uppercase tracking-widest text-center text-xs text-blue-100 max-w-80">
+      {/* Radial Gradient Overlay */}
+      <div className="absolute inset-0 flex items-center justify-center">
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]" />
+      </div>
+
+      {/* Hero Content */}
+      <div className="relative z-10 flex justify-center px-6">
+        <div className="max-w-[95vw] md:max-w-3xl lg:max-w-[60vw] flex flex-col justify-center items-center text-center">
+          <h2 className="uppercase tracking-widest text-xs text-blue-500 dark:text-blue-200 mb-2">
             Tout le monde peut, mais peu osent ! &#128512;
           </h2>
           <TextGenerateEffect
-            className="text-center text-[40px] md:text-4xl lg:text-5xl"
+            className="text-[32px] md:text-4xl lg:text-5xl leading-tight mb-4 text-gray-800 dark:text-gray-100"
             words="Transformez vos idées en réalité digitale."
           />
-          <p className="text-center md:tracking-wider mb-4 text-sm md:text-lg lg:text- xl">
+          <p className="text-sm md:text-lg lg:text-xl leading-relaxed text-gray-600 dark:text-gray-300 mb-6">
             Bonjour, je suis Michel MOUHANI, développeur web Fullstack basé au
             Congo Brazzaville.
           </p>
