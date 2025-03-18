@@ -31,7 +31,7 @@ const Hero = () => {
       <div className="relative z-10 flex justify-center px-6">
         <div className="max-w-[95vw] md:max-w-3xl lg:max-w-[60vw] flex flex-col justify-center items-center text-center">
           <h2 className="uppercase tracking-widest text-xs text-primary dark:text-blue-200 mb-2">
-            Réussir c'est aider les autres à réussir ! &#128512;
+            Réussir c&pos;est aider les autres à réussir ! &#128512;
           </h2>
           <TextGenerateEffect
             className="text-[32px] md:text-4xl lg:text-5xl leading-tight mb-4 text-gray-800 dark:text-gray-100"
