@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { IoCopyOutline } from "react-icons/io5";
-import Lottie from "react-lottie";
+// import Lottie from "react-lottie";
 
 import { cn } from "@/lib/utils";
 import { BackgroundGradientAnimation } from "./BackgroundGradientAnimation";
@@ -168,14 +168,12 @@ export const BentoGridItem = ({
                     key={i}
                     className="group relative flex flex-col items-center bg-[#10132E] px-4 py-2 rounded-lg shadow-md"
                   >
-                    {/* Skill Icon */}
                     <Image
                       src={skill.img}
                       alt={skill.title}
                       width={24}
                       height={24}
                     />
-                    {/* Tooltip */}
                     <div className="absolute bottom-full mb-2 hidden group-hover:flex items-center justify-center bg-black text-white text-xs px-2 py-1 rounded-md shadow-md w-auto whitespace-nowrap">
                       {skill.title}
                     </div>
@@ -187,13 +185,13 @@ export const BentoGridItem = ({
 
           {id === 6 && (
             <div className="mt-5 relative">
-              <div
+              {/* <div
                 className={`absolute -bottom-5 right-0 ${
                   copied ? "block" : "block"
                 }`}
               >
                 <Lottie options={defaultOptions} height={200} width={400} />
-              </div>
+              </div> */}
 
               <MagicButton
                 title={

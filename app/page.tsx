@@ -15,14 +15,14 @@ export default function Home() {
     <main className="select-none bg-black-100 flex justify-center items-center overflow-hidden flex-col mx-auto">
       <FloatingNav navItems={navItems} />
       <Hero />
-      {/* <div className="w-full px-10">
+      <div className="w-full px-10">
         <Grid />
         <RecentProjects />
         <Clients />
         <Experience />
         <Approach />
         <Footer />
-      </div> */}
+      </div>
     </main>
   );
 }
