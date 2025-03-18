@@ -1,3 +1,5 @@
+"use client";
+
 import { FaLocationArrow } from "react-icons/fa";
 import MagicButton from "./ui/MagicButton";
 import { Spotlight } from "./ui/Spotlight";
@@ -38,8 +40,8 @@ const Hero = () => {
             words="Transformez vos idées en réalité digitale."
           />
           <p className="text-sm md:text-lg lg:text-xl leading-relaxed text-gray-600 dark:text-gray-300 mb-6">
-            Bonjour, je suis Michel MOUHANI, développeur web basé au
-            Congo Brazzaville.
+            Bonjour, je suis Michel MOUHANI, développeur web basé au Congo
+            Brazzaville.
           </p>
           <a href="#about">
             <MagicButton
