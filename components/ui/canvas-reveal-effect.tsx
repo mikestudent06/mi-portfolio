@@ -1,8 +1,21 @@
 "use client";
 import { cn } from "@/lib/utils";
-import { Canvas, useFrame, useThree } from "@react-three/fiber";
-import React, { useMemo, useRef } from "react";
-import * as THREE from "three";
+import React, { useMemo, useRef, useEffect, useState } from "react";
+
+// Lazy import Three.js and React Three Fiber to avoid SSR issues
+let Canvas: any, useFrame: any, useThree: any, THREE: any;
+
+const loadThreeJS = async () => {
+  const [threeModule, fiberModule] = await Promise.all([
+    import("three"),
+    import("@react-three/fiber"),
+  ]);
+
+  THREE = threeModule;
+  Canvas = fiberModule.Canvas;
+  useFrame = fiberModule.useFrame;
+  useThree = fiberModule.useThree;
+};
 
 export const CanvasRevealEffect = ({
   animationSpeed = 0.4,
@@ -23,6 +36,31 @@ export const CanvasRevealEffect = ({
   dotSize?: number;
   showGradient?: boolean;
 }) => {
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    loadThreeJS()
+      .then(() => {
+        setIsLoaded(true);
+      })
+      .catch(console.error);
+  }, []);
+
+  if (!isLoaded) {
+    return (
+      <div
+        className={cn("h-full relative bg-white w-full", containerClassName)}
+      >
+        <div className="h-full w-full flex items-center justify-center">
+          <div className="animate-pulse bg-gray-200 w-full h-full rounded-3xl" />
+        </div>
+        {showGradient && (
+          <div className="absolute inset-0 bg-gradient-to-t from-gray-950 to-[84%]" />
+        )}
+      </div>
+    );
+  }
+
   return (
     <div className={cn("h-full relative bg-white w-full", containerClassName)}>
       <div className="h-full w-full">
@@ -181,6 +219,7 @@ type Uniforms = {
     type: string;
   };
 };
+
 const ShaderMaterial = ({
   source,
   uniforms,
@@ -192,11 +231,11 @@ const ShaderMaterial = ({
   uniforms: Uniforms;
 }) => {
   const { size } = useThree();
-  const ref = useRef<THREE.Mesh>();
+  const ref = useRef<any>();
   let lastFrameTime = 0;
 
   useFrame(({ clock }) => {
-    if (!ref.current) return;
+    if (!ref.current || !THREE) return;
     const timestamp = clock.getElapsedTime();
     if (timestamp - lastFrameTime < 1 / maxFps) {
       return;
@@ -209,6 +248,8 @@ const ShaderMaterial = ({
   });
 
   const getUniforms = () => {
+    if (!THREE) return {};
+
     const preparedUniforms: any = {};
 
     for (const uniformName in uniforms) {
@@ -250,12 +291,14 @@ const ShaderMaterial = ({
     preparedUniforms["u_time"] = { value: 0, type: "1f" };
     preparedUniforms["u_resolution"] = {
       value: new THREE.Vector2(size.width * 2, size.height * 2),
-    }; // Initialize u_resolution
+    };
     return preparedUniforms;
   };
 
   // Shader material
   const material = useMemo(() => {
+    if (!THREE) return null;
+
     const materialObject = new THREE.ShaderMaterial({
       vertexShader: `
       precision mediump float;
@@ -281,8 +324,10 @@ const ShaderMaterial = ({
     return materialObject;
   }, [size.width, size.height, source]);
 
+  if (!material) return null;
+
   return (
-    <mesh ref={ref as any}>
+    <mesh ref={ref}>
       <planeGeometry args={[2, 2]} />
       <primitive object={material} attach="material" />
     </mesh>
@@ -290,12 +335,15 @@ const ShaderMaterial = ({
 };
 
 const Shader: React.FC<ShaderProps> = ({ source, uniforms, maxFps = 60 }) => {
+  if (!Canvas) return null;
+
   return (
-    <Canvas className="absolute inset-0  h-full w-full">
+    <Canvas className="absolute inset-0 h-full w-full">
       <ShaderMaterial source={source} uniforms={uniforms} maxFps={maxFps} />
     </Canvas>
   );
 };
+
 interface ShaderProps {
   source: string;
   uniforms: {

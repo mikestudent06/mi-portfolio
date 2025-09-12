@@ -2,7 +2,16 @@
 
 import React from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { CanvasRevealEffect } from "./ui/canvas-reveal-effect";
+import dynamic from "next/dynamic";
+
+// Dynamically import CanvasRevealEffect with SSR disabled
+const CanvasRevealEffect = dynamic(
+  () =>
+    import("./ui/canvas-reveal-effect").then((mod) => ({
+      default: mod.CanvasRevealEffect,
+    })),
+  { ssr: false }
+);
 
 const Approach = () => {
   return (
@@ -42,7 +51,7 @@ const Approach = () => {
         <Card
           title="Finalisation & Lancement"
           icon={<AceternityIcon order="Phase 3" />}
-          des="C'est là que la magie opère ! Sur la base du design approuvé, je traduis tout en code fonctionnel
+          des="C'est là que la magie opère ! Sur la base du design approuvé, je traduis tout en code fonctionnel
           et je construis votre site web de A à Z."
         >
           <CanvasRevealEffect
