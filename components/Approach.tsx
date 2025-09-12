@@ -2,8 +2,7 @@
 
 import React from "react";
 import { AnimatePresence, motion } from "framer-motion";
-
-import { CanvasRevealEffect } from "./ui/CanvasRevealEffect";
+import { CanvasRevealEffect } from "./ui/canvas-reveal-effect";
 
 const Approach = () => {
   return (
@@ -63,7 +62,7 @@ const Card = ({
   title,
   icon,
   children,
-  des
+  des,
 }: {
   title: string;
   icon: React.ReactNode;
@@ -80,7 +79,7 @@ const Card = ({
       style={{
         background: "rgb(4,7,29)",
         backgroundColor:
-          "linear-gradient(90deg, rgba(4,7,29,1) 0%, rgba(12,14,35,1) 100%)"
+          "linear-gradient(90deg, rgba(4,7,29,1) 0%, rgba(12,14,35,1) 100%)",
       }}
     >
       <Icon className="absolute h-10 w-10 -top-3 -left-3 dark:text-white text-black opacity-30" />
