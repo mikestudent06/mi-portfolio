@@ -234,7 +234,7 @@ const ShaderMaterial = ({
   const ref = useRef<any>();
   let lastFrameTime = 0;
 
-  useFrame(({ clock }) => {
+  useFrame(({ clock }: { clock: any }) => {
     if (!ref.current || !THREE) return;
     const timestamp = clock.getElapsedTime();
     if (timestamp - lastFrameTime < 1 / maxFps) {
