@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import { FaFile, FaLocationArrow } from "react-icons/fa";
 import MagicButton from "./ui/MagicButton";
 import { TextGenerateEffect } from "./ui/TextGenerateEffect";
-import { SparklesCore } from "./ui/sparkles";
 import { CardBody, CardContainer, CardItem } from "@/components/ui/3d-card";
 
 const Hero = () => {
@@ -68,21 +67,9 @@ const Hero = () => {
   };
 
   return (
-    <div className="relative w-full flex justify-between items-center h-screen bg-gradient-to-b from-white to-gray-50 dark:from-black dark:to-gray-900">
-      <div className="w-full absolute inset-0 h-screen">
-        <SparklesCore
-          id="tsparticlesfullpage"
-          background="transparent"
-          minSize={0.6}
-          maxSize={1.4}
-          particleDensity={100}
-          className="w-full h-full"
-          particleColor="#FFFFFF"
-        />
-      </div>
-
+    <div className="relative w-full flex justify-between items-center h-screen">
       {/* Hero Content */}
-      <div className="relative h-full w-full flex flex-col-reverse md:flex-row justify-center items-center px-6 pb-32">
+      <div className="relative h-full w-full flex flex-col-reverse lg:flex-row justify-center items-center px-6 pb-32">
         {/* Section texte */}
         <motion.div
           className="w-1/2 flex flex-col justify-center items-center text-center"
@@ -122,7 +109,7 @@ const Hero = () => {
           </motion.p>
 
           <motion.div
-            className="flex items-center gap-6"
+            className="flex flex-col sm:flex-row items-center gap-6"
             variants={staggerContainer}
             initial="hidden"
             animate="visible"

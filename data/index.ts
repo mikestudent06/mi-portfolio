@@ -80,7 +80,7 @@ export const gridItems: GridItem[] = [
     title: "Développeur Full-Stack passionné par l'innovation technologique",
     description:
       "Plus de 3 ans d'expérience dans la création d'applications web et mobiles",
-    className: "lg:col-span-3 md:col-span-6 sm:col-span-6 sm:row-span-2",
+    className: "lg:col-span-3 md:col-span-6 sm:col-span-6 sm:row-span-1",
     imgClassName: "",
     titleClassName: "justify-start",
     img: "/grid.svg",
@@ -91,7 +91,7 @@ export const gridItems: GridItem[] = [
     title: "Collaboration flexible dans tous les fuseaux horaires",
     description:
       "Adapté au travail en équipe internationale et aux projets clients diversifiés",
-    className: "lg:col-span-2 md:col-span-3 sm:col-span-6 sm:row-span-1",
+    className: "lg:col-span-2 md:col-span-6 sm:col-span-6 sm:row-span-1",
     imgClassName: "",
     titleClassName: "justify-start",
     img: "",
@@ -115,7 +115,7 @@ export const gridItems: GridItem[] = [
       "De la conception à la mise en production, accompagnement complet de vos projets",
     className: "lg:col-span-2 md:col-span-3 sm:col-span-6 sm:row-span-1",
     imgClassName: "",
-    titleClassName: "justify-center md:max-w-full max-w-60 text-center",
+    titleClassName: "justify-center w-full text-center",
     img: "",
     spareImg: "",
   },
@@ -134,7 +134,7 @@ export const gridItems: GridItem[] = [
     title: "Passionné par l'apprentissage continu",
     description:
       "Veille technologique constante et formation aux dernières tendances du développement",
-    className: "lg:col-span-2 md:col-span-3 sm:col-span-6 sm:row-span-1",
+    className: "lg:col-span-6 md:col-span-6 sm:col-span-6 sm:row-span-1",
     imgClassName: "",
     titleClassName: "justify-center",
     img: "",

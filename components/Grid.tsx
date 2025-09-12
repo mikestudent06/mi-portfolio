@@ -22,7 +22,7 @@ const Grid = () => {
   };
 
   return (
-    <section id="about">
+    <section id="about" className="py-20">
       <motion.div
         initial="hidden"
         whileInView="visible"

@@ -12,7 +12,7 @@ import { navItems } from "@/data";
 
 export default function Home() {
   return (
-    <main className="select-none w-full bg-black-100 flex justify-center items-center overflow-hidden flex-col mx-auto">
+    <main className="select-none w-full flex justify-center items-center overflow-hidden flex-col mx-auto">
       <FloatingNav navItems={navItems} />
       <Hero />
       <div className="w-full px-10 ">
