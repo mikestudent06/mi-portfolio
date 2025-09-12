@@ -1,56 +1,204 @@
 "use client";
 
-import { FaLocationArrow } from "react-icons/fa";
+import { motion } from "framer-motion";
+import { FaFile, FaLocationArrow } from "react-icons/fa";
 import MagicButton from "./ui/MagicButton";
-import { Spotlight } from "./ui/Spotlight";
 import { TextGenerateEffect } from "./ui/TextGenerateEffect";
+import { SparklesCore } from "./ui/sparkles";
+import { CardBody, CardContainer, CardItem } from "@/components/ui/3d-card";
 
 const Hero = () => {
-  return (
-    <div className="relative w-full overflow-hidden pb-10 pt-20 bg-gradient-to-b from-white to-gray-50 dark:from-black dark:to-gray-900">
-      {/* Animated Spotlights */}
-      <div className="absolute left-0 right-0 inset-0 pointer-events-none">
-        <Spotlight
-          className="animate-pulse opacity-50 -top-40 left-10 md:-left-32 md:-top-20 h-screen"
-          fill="white"
-        />
-        <Spotlight
-          className="animate-[pulse_3s_infinite] opacity-60 h-[80vh] w-[50vw]  top-10"
-          fill="purple"
-        />
-        <Spotlight
-          className="animate-[pulse_2.5s_infinite] opacity-50 left-80 top-28 h-[80vh] w-[50vw]"
-          fill="blue"
-        />
-      </div>
+  // Variants d'animation pour la réutilisabilité
+  const slideInFromLeft = {
+    hidden: { x: -100, opacity: 0 },
+    visible: {
+      x: 0,
+      opacity: 1,
+      transition: { duration: 1, ease: "easeOut" },
+    },
+  };
 
-      {/* Radial Gradient Overlay */}
-      <div className="absolute left-0 right-0 inset-0 flex items-center justify-center">
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]" />
+  const slideInFromRight = {
+    hidden: { x: 100, opacity: 0, scale: 0.8 },
+    visible: {
+      x: 0,
+      opacity: 1,
+      scale: 1,
+      transition: { duration: 1, ease: "easeOut", delay: 0.3 },
+    },
+  };
+
+  const fadeInUp = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: { duration: 0.6, ease: "easeOut" },
+    },
+  };
+
+  const fadeInDown = {
+    hidden: { y: -20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: { duration: 0.6, ease: "easeOut", delay: 0.5 },
+    },
+  };
+
+  const staggerContainer = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+        delayChildren: 0.8,
+      },
+    },
+  };
+
+  const buttonVariant = {
+    hidden: { y: 30, opacity: 0, scale: 0.9 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      scale: 1,
+      transition: { duration: 0.5, ease: "backOut" },
+    },
+  };
+
+  return (
+    <div className="relative w-full flex justify-between items-center h-screen bg-gradient-to-b from-white to-gray-50 dark:from-black dark:to-gray-900">
+      <div className="w-full absolute inset-0 h-screen">
+        <SparklesCore
+          id="tsparticlesfullpage"
+          background="transparent"
+          minSize={0.6}
+          maxSize={1.4}
+          particleDensity={100}
+          className="w-full h-full"
+          particleColor="#FFFFFF"
+        />
       </div>
 
       {/* Hero Content */}
-      <div className="relative z-10 flex justify-center px-6">
-        <div className="max-w-[95vw] md:max-w-3xl lg:max-w-[60vw] flex flex-col justify-center items-center text-center">
-          <h2 className="uppercase tracking-widest text-xs text-primary dark:text-blue-200 mb-2">
+      <div className="relative h-full w-full flex flex-col-reverse md:flex-row justify-center items-center px-6 pb-32">
+        {/* Section texte */}
+        <motion.div
+          className="w-1/2 flex flex-col justify-center items-center text-center"
+          variants={slideInFromLeft}
+          initial="hidden"
+          animate="visible"
+        >
+          <motion.h2
+            className="uppercase tracking-widest text-xs text-primary dark:text-blue-200 mb-2"
+            variants={fadeInDown}
+            initial="hidden"
+            animate="visible"
+          >
             Réussir c&apos;est aider les autres à réussir ! &#128512;
-          </h2>
-          <TextGenerateEffect
-            className="text-[32px] md:text-4xl lg:text-5xl leading-tight mb-4 text-gray-800 dark:text-gray-100"
-            words="Transformez vos idées en réalité digitale."
-          />
-          <p className="text-sm md:text-lg lg:text-xl leading-relaxed text-gray-600 dark:text-gray-300 mb-6">
+          </motion.h2>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+          >
+            <TextGenerateEffect
+              className="text-[32px] md:text-4xl lg:text-5xl leading-tight mb-4 text-gray-800 dark:text-gray-100"
+              words="Transformez vos idées en réalité digitale."
+            />
+          </motion.div>
+
+          <motion.p
+            className="text-sm md:text-lg lg:text-xl leading-relaxed text-gray-600 dark:text-gray-300 mb-6"
+            variants={fadeInUp}
+            initial="hidden"
+            animate="visible"
+            transition={{ delay: 0.7 }}
+          >
             Bonjour, je suis Michel MOUHANI, développeur web basé au Congo
             Brazzaville.
-          </p>
-          <a href="#about">
-            <MagicButton
-              title="Voir mon travail"
-              icon={<FaLocationArrow />}
-              position="right"
-            />
-          </a>
-        </div>
+          </motion.p>
+
+          <motion.div
+            className="flex items-center gap-6"
+            variants={staggerContainer}
+            initial="hidden"
+            animate="visible"
+          >
+            <motion.a
+              href="#about"
+              variants={buttonVariant}
+              whileHover={{
+                scale: 1.05,
+                transition: { duration: 0.3 },
+              }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <MagicButton
+                title="Voir mon travail"
+                icon={<FaLocationArrow />}
+                position="right"
+              />
+            </motion.a>
+
+            <motion.a
+              href="/cv.pdf"
+              download="CV"
+              variants={buttonVariant}
+              whileHover={{
+                scale: 1.05,
+                transition: { duration: 0.3 },
+              }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <MagicButton
+                title="Voir mon cv"
+                icon={<FaFile />}
+                position="right"
+              />
+            </motion.a>
+          </motion.div>
+        </motion.div>
+
+        {/* Section image */}
+        <motion.div
+          className="w-1/2 flex justify-center items-center"
+          variants={slideInFromRight}
+          initial="hidden"
+          animate="visible"
+        >
+          <motion.div
+            animate={{
+              y: [-10, 10, -10],
+              rotate: [-2, 2, -2],
+            }}
+            transition={{
+              duration: 6,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          >
+            <CardContainer className="inter-var">
+              <CardBody className="bg-gray-50 relative group/card dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-auto sm:w-[30rem] h-auto rounded-xl p-6 border">
+                <CardItem translateZ="100" className="w-full mt-4">
+                  <motion.img
+                    src={"/me.jpeg"}
+                    height="1000"
+                    width="1000"
+                    className="h-auto w-full object-contain rounded-xl group-hover/card:shadow-xl"
+                    alt="Profile image"
+                    whileHover={{
+                      scale: 1.02,
+                      transition: { duration: 0.3 },
+                    }}
+                  />
+                </CardItem>
+              </CardBody>
+            </CardContainer>
+          </motion.div>
+        </motion.div>
       </div>
     </div>
   );

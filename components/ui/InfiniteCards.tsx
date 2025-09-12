@@ -2,7 +2,7 @@
 
 import { cn } from "@/lib/utils";
 import React, { useEffect, useState } from "react";
-import Image from "next/image"; 
+import Image from "next/image";
 
 export const InfiniteMovingCards = ({
   items,
@@ -28,7 +28,7 @@ export const InfiniteMovingCards = ({
   useEffect(() => {
     addAnimation();
   }, []);
-  
+
   const [start, setStart] = useState(false);
   function addAnimation() {
     if (containerRef.current && scrollerRef.current) {
@@ -127,7 +127,6 @@ export const InfiniteMovingCards = ({
                     alt="profile"
                   />
                 </div>
-
 
                 <span className="flex flex-col gap-1">
                   {/* change text color, font-normal to font-bold, text-xl */}

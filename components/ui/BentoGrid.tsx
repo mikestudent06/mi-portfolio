@@ -2,14 +2,13 @@
 
 import { useState } from "react";
 import { IoCopyOutline } from "react-icons/io5";
-// import Lottie from "react-lottie";
 
 import { cn } from "@/lib/utils";
 import { BackgroundGradientAnimation } from "./BackgroundGradientAnimation";
 import animationData from "@/data/confetti.json";
 import MagicButton from "./MagicButton";
-import { GridGlobe } from "./GridGlobe";
 import Image from "next/image";
+import Lottie from "react-lottie";
 
 export const BentoGrid = ({
   className,
@@ -35,10 +34,8 @@ export const BentoGridItem = ({
   id,
   title,
   description,
-  img,
-  imgClassName,
+
   titleClassName,
-  spareImg,
 }: {
   className?: string;
   id: number;
@@ -97,40 +94,9 @@ export const BentoGridItem = ({
       }}
     >
       <div className={`${id === 6 && "flex justify-center"} h-full`}>
-        <div className="w-full h-full absolute">
-          {img && (
-            <Image
-              width={1200}
-              height={800}
-              src={img}
-              alt="Profile image"
-              className={cn(imgClassName, "object-cover object-center")}
-            />
-          )}
-        </div>
+        {id === 1 && <></>}
 
-        {id === 1 && (
-          <div className="relative w-full h-full flex flex-col items-center justify-center space-y-4 p-6">
-            {spareImg && (
-              <Image
-                width={120}
-                height={120}
-                src={spareImg}
-                alt="Profile image"
-                className="rounded-full border-4 border-white shadow-lg"
-              />
-            )}
-            <a
-              href="/cv.pdf"
-              download="CV"
-              className="z-50 cursor-pointer bg-[#0f172a] text-white font-bold px-6 py-3 rounded-full shadow-lg transform hover:scale-105 transition-transform duration-200 ease-in-out"
-            >
-              Voir mon CV
-            </a>
-          </div>
-        )}
-
-        {id === 6 && (
+        {id === 4 && (
           <BackgroundGradientAnimation>
             <div className="absolute z-50 inset-0 flex items-center justify-center text-white font-bold px-4 pointer-events-none text-3xl text-center md:text-4xl lg:text-7xl"></div>
           </BackgroundGradientAnimation>
@@ -154,11 +120,7 @@ export const BentoGridItem = ({
             }`}
           >
             <p className="w-full">{title}</p>
-            {id === 2 && (
-              <div className="hidden md:block">
-                <GridGlobe />
-              </div>
-            )}
+            {id === 2 && <div className="hidden md:block"></div>}
           </div>
           {id === 3 && (
             <div className="flex flex-col h-full w-full mt-10">
@@ -183,16 +145,15 @@ export const BentoGridItem = ({
             </div>
           )}
 
-          {id === 6 && (
+          {id === 4 && (
             <div className="mt-5 relative">
-              {/* <div
+              <div
                 className={`absolute -bottom-5 right-0 ${
                   copied ? "block" : "block"
                 }`}
               >
                 <Lottie options={defaultOptions} height={200} width={400} />
-                replace lottie later
-              </div> */}
+              </div>
 
               <MagicButton
                 title={
