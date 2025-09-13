@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { cn } from "@/lib/utils";
 import { Testimonial } from "@/data";
+import Image from "next/image";
 
 export const TestimonialsCard = React.memo(
   ({
@@ -28,7 +29,8 @@ export const TestimonialsCard = React.memo(
     >
       {/* Background Image with Overlay */}
       <div className="absolute inset-0">
-        <img
+        <Image
+          fill
           src={card.img}
           alt={card.name}
           className="w-full h-full object-cover opacity-20"
@@ -73,7 +75,8 @@ export const TestimonialsCard = React.memo(
           )}
         >
           <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-purple-500/30">
-            <img
+            <Image
+              fill
               src={card.img}
               alt={card.name}
               className="w-full h-full object-cover"

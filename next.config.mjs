@@ -9,4 +9,3 @@ const nextConfig = {
     ignoreDuringBuilds: true, // Ignores ESLint errors during the build process
   },
 };
-
