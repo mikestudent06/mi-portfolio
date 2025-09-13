@@ -22,7 +22,7 @@ export const TestimonialsCard = React.memo(
       onMouseLeave={() => setHovered(null)}
       className={cn(
         // Improved mobile height and responsive sizing
-        "rounded-xl relative bg-gradient-to-br from-slate-50 to-slate-100 dark:from-neutral-900 dark:to-neutral-800 overflow-hidden min-h-[400px] sm:min-h-[450px] md:h-96 w-full transition-all duration-500 ease-out cursor-pointer shadow-lg hover:shadow-2xl border border-slate-200 dark:border-neutral-700",
+        "rounded-xl relative bg-gradient-to-br from-slate-50 to-slate-100 dark:from-neutral-900 dark:to-neutral-800 overflow-hidden min-h-[500px] sm:min-h-[450px] md:h-96 w-full transition-all duration-500 ease-out cursor-pointer shadow-lg hover:shadow-2xl border border-slate-200 dark:border-neutral-700",
         // Better mobile hover effects - reduce blur/scale on mobile
         hovered !== null &&
           hovered !== index &&
