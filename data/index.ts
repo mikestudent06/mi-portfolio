@@ -229,13 +229,13 @@ export const testimonials: Testimonial[] = [
 export const companies: Company[] = [
   {
     id: 1,
-    name: "cloudinary",
+    name: "Ginov",
     img: "/cloud.svg",
     nameImg: "/cloudName.svg",
   },
   {
     id: 2,
-    name: "appwrite",
+    name: "Lordson",
     img: "/app.svg",
     nameImg: "/appName.svg",
   },
