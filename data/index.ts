@@ -172,8 +172,6 @@ export const skills: Skill[] = [
   // Tools
   { title: "Git", img: "/git.svg", category: "Tools" },
   { title: "Docker", img: "/dock.svg", category: "DevOps" },
-  { title: "AWS", img: "/aws.svg", category: "Cloud" },
-  { title: "Vercel", img: "/vercel.svg", category: "Deployment" },
 ];
 
 export const projects: Project[] = [

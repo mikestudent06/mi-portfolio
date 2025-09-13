@@ -9,6 +9,7 @@ import animationData from "@/data/confetti.json";
 import MagicButton from "./MagicButton";
 import Image from "next/image";
 import Lottie from "react-lottie";
+import { skills } from "@/data";
 
 export const BentoGrid = ({
   className,
@@ -46,24 +47,6 @@ export const BentoGridItem = ({
   titleClassName?: string;
   spareImg?: string;
 }) => {
-  const skills: { title: string; img: string }[] = [
-    { title: "Html", img: "/html.svg" },
-    { title: "Css", img: "/css.svg" },
-    { title: "Tailwindcss", img: "/tail.svg" },
-    { title: "Javascript", img: "/javascript.svg" },
-    { title: "React", img: "/re.svg" },
-    { title: "React Native", img: "/react-native.svg" },
-    { title: "VueJs", img: "/vue.svg" },
-    { title: "NextJs", img: "/nextjs.svg" },
-    { title: "Git", img: "/git.svg" },
-    { title: "Typescript", img: "/ts.svg" },
-    { title: "Express", img: "/express.svg" },
-    { title: "NestJs", img: "/nestjs.svg" },
-    { title: "MongoDB", img: "/mongodb.svg" },
-    { title: "SQL", img: "/sql.svg" },
-    { title: "Python", img: "/python.svg" },
-  ];
-
   const [copied, setCopied] = useState(false);
 
   const defaultOptions = {
