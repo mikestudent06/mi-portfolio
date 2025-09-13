@@ -178,6 +178,14 @@ export const skills: Skill[] = [
 export const projects: Project[] = [
   {
     id: 1,
+    title: "Site web de la société Lordson Congo",
+    des: "Lordson Congo est une entreprise spécialisée dans les services offshore et d'échafaudage.",
+    img: "/lodson.png",
+    iconLists: ["/wp.svg", "/tail.svg", "/php.svg", "/fm.svg"],
+    link: "https://gymo.vercel.app/",
+  },
+  {
+    id: 2,
     title: "Gymo - Site web pour s'exercer",
     des: "Gardez la forme grâce à notre site fait exclusivement pour les sportifs, hommes et femmes.",
     img: "/p1.jpg",
@@ -185,7 +193,7 @@ export const projects: Project[] = [
     link: "https://gymo.vercel.app/",
   },
   {
-    id: 2,
+    id: 3,
     title:
       "Pitcheur - Application web pour les entrepreneurs qui souhaitent pitcher des projets et trouver des projets intéressants.",
     des: "Pitcheur est une application web conçue pour les entrepreneurs souhaitant présenter leurs idées innovantes et découvrir des projets prometteurs.",
