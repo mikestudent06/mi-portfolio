@@ -356,7 +356,7 @@ const RecentProjects = () => {
         {/* Navigation Controls - Only show if more than 1 project */}
         {projects.length > 1 && (
           <motion.div
-            className="flex justify-center items-center mt-16 gap-4"
+            className="flex justify-center items-center sm:mt-16 gap-4"
             initial={{ y: 50, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.5 }}
