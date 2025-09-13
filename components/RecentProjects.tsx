@@ -87,7 +87,7 @@ const ProjectSlide = ({ project, index, isActive }: ProjectSlideProps) => {
           containerClassName="w-full h-full "
         >
           <motion.div
-            className="relative w-full md:w-[400px] h-[200px] lg:h-[250px]  overflow-hidden rounded-3xl mb-6"
+            className="relative w-full sm:w-[400px] h-[200px] lg:h-[250px]  overflow-hidden rounded-3xl mb-6"
             whileHover={{ scale: 1.02 }}
             transition={{ type: "spring", stiffness: 300 }}
           >
