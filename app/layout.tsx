@@ -8,7 +8,7 @@ import { SparklesCore } from "@/components/ui/sparkles";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Site web portfolio, Michel MOUHANI",
+  title: "michelmouhani.dev",
   description: "Site web portfolio, Michel MOUHANI",
 };
 
