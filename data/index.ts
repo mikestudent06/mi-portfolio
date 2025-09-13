@@ -193,22 +193,6 @@ export const projects: Project[] = [
     iconLists: ["/next.svg", "/tail.svg", "/ts.svg", "/stream.svg", "/c.svg"],
     link: "https://pitcheur.vercel.app/",
   },
-  {
-    id: 3,
-    title: "MimoCam - Application de visioconférence",
-    des: "Une application réelle Software-as-a-Service avec des fonctionnalités AI et un système de paiements et crédits utilisant le dernier stack technologique.",
-    img: "/p3.jpg",
-    iconLists: ["/re.svg", "/tail.svg", "/ts.svg", "/c.svg"],
-    link: "https://mimocam.vercel.app/",
-  },
-  {
-    id: 4,
-    title: "Site de génération de prompts IA",
-    des: "Créez et trouvez des prompts que les IA comme ChatGpt comprend facilement.",
-    img: "/p4.jpg",
-    iconLists: ["/next.svg", "/tail.svg", "/ts.svg"],
-    link: "https://mimoprompty.vercel.app",
-  },
 ];
 
 export const testimonials: Testimonial[] = [
