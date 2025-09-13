@@ -11,16 +11,10 @@ import { motion, AnimatePresence } from "framer-motion";
 interface ProjectSlideProps {
   project: any;
   index: number;
-  current: number;
-  handleSlideClick: (index: number) => void;
+  isActive: boolean;
 }
 
-const ProjectSlide = ({
-  project,
-  index,
-  current,
-  handleSlideClick,
-}: ProjectSlideProps) => {
+const ProjectSlide = ({ project, index, isActive }: ProjectSlideProps) => {
   const slideRef = useRef<HTMLDivElement>(null);
   const xRef = useRef(0);
   const yRef = useRef(0);
@@ -63,21 +57,17 @@ const ProjectSlide = ({
     yRef.current = 0;
   };
 
-  const isActive = current === index;
-
   return (
     <motion.div
       ref={slideRef}
-      className="w-full flex justify-center px-4"
-      onClick={() => handleSlideClick(index)}
+      className="w-full h-full flex justify-center px-2 lg:px-4"
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       initial={{ opacity: 0, y: 50 }}
       animate={{
-        opacity: isActive ? 1 : 0.7,
+        opacity: 1,
         y: 0,
-        scale: isActive ? 1 : 0.95,
-        rotateX: isActive ? 0 : 5,
+        scale: 1,
       }}
       transition={{
         duration: 0.6,
@@ -90,14 +80,14 @@ const ProjectSlide = ({
           : "none",
       }}
     >
-      <div className="relative w-full">
+      <div className="relative w-full h-full">
         <PinContainer
           title={project.link}
           href={project.link}
-          containerClassName="w-full"
+          containerClassName="w-full h-full "
         >
           <motion.div
-            className="relative w-full h-[100px] md:h-[300px] overflow-hidden rounded-3xl mb-6"
+            className="relative w-full md:w-[400px] h-[200px] lg:h-[250px]  overflow-hidden rounded-3xl mb-6"
             whileHover={{ scale: 1.02 }}
             transition={{ type: "spring", stiffness: 300 }}
           >
@@ -139,9 +129,9 @@ const ProjectSlide = ({
                   // Fallback élégant si l'image ne se charge pas
                   <div className="w-full h-full bg-gradient-to-br from-purple-600/20 via-blue-600/20 to-purple-800/20 rounded-2xl flex items-center justify-center border border-white/10">
                     <div className="text-center">
-                      <div className="w-20 h-20 mx-auto mb-4 bg-white/10 rounded-2xl flex items-center justify-center backdrop-blur-sm">
+                      <div className="w-16 h-16 mx-auto mb-3 bg-white/10 rounded-2xl flex items-center justify-center backdrop-blur-sm">
                         <svg
-                          className="w-10 h-10 text-white/60"
+                          className="w-8 h-8 text-white/60"
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"
@@ -154,7 +144,7 @@ const ProjectSlide = ({
                           />
                         </svg>
                       </div>
-                      <p className="text-sm text-white/60 font-medium">
+                      <p className="text-xs text-white/60 font-medium">
                         {project.title}
                       </p>
                       <p className="text-xs text-white/40 mt-1">
@@ -176,14 +166,14 @@ const ProjectSlide = ({
             transition={{ delay: 0.3 }}
           >
             <h1
-              className="font-bold text-xl lg:text-2xl line-clamp-2 text-white"
+              className="font-bold text-lg lg:text-xl line-clamp-2 text-white mb-2"
               title={project.title}
             >
               {project.title}
             </h1>
 
             <p
-              className="text-sm lg:text-base font-light line-clamp-3 text-neutral-300"
+              className="text-sm font-light line-clamp-2 lg:line-clamp-3 text-neutral-300"
               title={project.des}
             >
               {project.des}
@@ -191,48 +181,57 @@ const ProjectSlide = ({
           </motion.div>
 
           <motion.div
-            className="flex items-center justify-between mt-6"
+            className="flex items-center justify-between mt-4 lg:mt-6"
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.4 }}
           >
             <div className="flex items-center">
-              {project.iconLists.map((icon: string, iconIndex: number) => (
-                <motion.div
-                  key={iconIndex}
-                  className="border border-white/20 rounded-full bg-black/50 backdrop-blur-sm w-10 h-10 flex justify-center items-center"
-                  style={{
-                    transform: `translateX(-${5 * iconIndex}px)`,
-                    zIndex: project.iconLists.length - iconIndex,
-                  }}
-                  whileHover={{ scale: 1.1, y: -2 }}
-                  transition={{ type: "spring", stiffness: 400 }}
-                >
-                  <Image
-                    width={20}
-                    height={20}
-                    src={icon}
-                    alt="technology"
-                    className="w-5 h-5"
-                  />
-                </motion.div>
-              ))}
+              {project.iconLists
+                .slice(0, 4)
+                .map((icon: string, iconIndex: number) => (
+                  <motion.div
+                    key={iconIndex}
+                    className="border border-white/20 rounded-full bg-black/50 backdrop-blur-sm w-8 h-8 lg:w-10 lg:h-10 flex justify-center items-center"
+                    style={{
+                      transform: `translateX(-${4 * iconIndex}px)`,
+                      zIndex: project.iconLists.length - iconIndex,
+                    }}
+                    whileHover={{ scale: 1.1, y: -2 }}
+                    transition={{ type: "spring", stiffness: 400 }}
+                  >
+                    <Image
+                      width={16}
+                      height={16}
+                      src={icon}
+                      alt="technology"
+                      className="w-4 h-4 lg:w-5 lg:h-5"
+                    />
+                  </motion.div>
+                ))}
+              {project.iconLists.length > 4 && (
+                <div className="border border-white/20 rounded-full bg-black/50 backdrop-blur-sm w-8 h-8 lg:w-10 lg:h-10 flex justify-center items-center ml-2">
+                  <span className="text-xs text-white/60">
+                    +{project.iconLists.length - 4}
+                  </span>
+                </div>
+              )}
             </div>
 
             <motion.a
               href={project.link}
               target="_blank"
               className="flex justify-center items-center group text-purple-400 hover:text-purple-300 transition-colors"
-              whileHover={{ x: 5 }}
+              whileHover={{ x: 3 }}
               transition={{ type: "spring", stiffness: 400 }}
             >
-              <p className="text-sm font-medium">Voir le projet</p>
+              <p className="text-xs lg:text-sm font-medium">Voir</p>
               <motion.div
-                className="ml-2"
-                whileHover={{ x: 3 }}
+                className="ml-1 lg:ml-2"
+                whileHover={{ x: 2 }}
                 transition={{ type: "spring", stiffness: 400 }}
               >
-                <FaLocationArrow className="w-4 h-4" />
+                <FaLocationArrow className="w-3 h-3 lg:w-4 lg:h-4" />
               </motion.div>
             </motion.a>
           </motion.div>
@@ -257,7 +256,7 @@ const CarouselControl = ({
 }: CarouselControlProps) => {
   return (
     <motion.button
-      className={`w-14 h-14 flex items-center mx-4 justify-center bg-neutral-900/80 backdrop-blur-sm border border-white/10 rounded-full focus:border-purple-400 focus:outline-none transition-all duration-300 ${
+      className={`w-12 h-12 lg:w-14 lg:h-14 flex items-center mx-2 lg:mx-4 justify-center bg-neutral-900/80 backdrop-blur-sm border border-white/10 rounded-full focus:border-purple-400 focus:outline-none transition-all duration-300 ${
         type === "previous" ? "rotate-180" : ""
       } ${
         disabled
@@ -279,7 +278,7 @@ const CarouselControl = ({
       whileTap={disabled ? {} : { scale: 0.95 }}
       transition={{ type: "spring", stiffness: 400 }}
     >
-      <IconArrowNarrowRight className="text-neutral-300 w-6 h-6" />
+      <IconArrowNarrowRight className="text-neutral-300 w-5 h-5 lg:w-6 lg:h-6" />
     </motion.button>
   );
 };
@@ -287,32 +286,55 @@ const CarouselControl = ({
 const RecentProjects = () => {
   const [current, setCurrent] = useState(0);
 
+  // Calculate slides based on screen size
+  const getProjectsPerSlide = () => {
+    if (typeof window !== "undefined") {
+      return window.innerWidth >= 1024 ? 3 : 1; // 3 on desktop (lg+), 1 on mobile/tablet
+    }
+    return 1;
+  };
+
+  const [projectsPerSlide, setProjectsPerSlide] = useState(1);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setProjectsPerSlide(getProjectsPerSlide());
+    };
+
+    handleResize(); // Set initial value
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  // Calculate total slides
+  const totalSlides = Math.ceil(projects.length / projectsPerSlide);
+
   const handlePreviousClick = () => {
     const previous = current - 1;
-    setCurrent(previous < 0 ? projects.length - 1 : previous);
+    setCurrent(previous < 0 ? totalSlides - 1 : previous);
   };
 
   const handleNextClick = () => {
     const next = current + 1;
-    setCurrent(next === projects.length ? 0 : next);
+    setCurrent(next >= totalSlides ? 0 : next);
   };
 
-  const handleSlideClick = (index: number) => {
-    if (current !== index) {
-      setCurrent(index);
-    }
+  // Get projects for current slide
+  const getCurrentSlideProjects = () => {
+    const startIndex = current * projectsPerSlide;
+    return projects.slice(startIndex, startIndex + projectsPerSlide);
   };
 
   // Auto-play functionality (optionnel)
   useEffect(() => {
-    if (projects.length <= 1) return;
+    if (totalSlides <= 1) return;
 
     const interval = setInterval(() => {
-      setCurrent((prev) => (prev + 1) % projects.length);
-    }, 10000); // Change slide every 10 seconds
+      setCurrent((prev) => (prev + 1) % totalSlides);
+    }, 12000); // Change slide every 12 seconds
 
     return () => clearInterval(interval);
-  }, []);
+  }, [totalSlides]);
 
   return (
     <motion.div
@@ -331,50 +353,57 @@ const RecentProjects = () => {
         Quelques <span className="text-purple">projets récents</span>
       </motion.h1>
 
-      <div className="relative w-full mx-auto">
+      <div className="relative w-full max-w-7xl mx-auto px-4">
         {/* Carousel Container */}
         <div className="relative overflow-hidden">
-          <motion.div
-            className="flex transition-transform duration-700 ease-in-out"
-            style={{
-              transform: `translateX(-${current * 100}%)`,
-            }}
-          >
-            {projects.map((project, index) => (
-              <div key={project.id} className="w-full flex-shrink-0">
-                <ProjectSlide
-                  project={project}
-                  index={index}
-                  current={current}
-                  handleSlideClick={handleSlideClick}
-                />
-              </div>
-            ))}
-          </motion.div>
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={current}
+              className={`grid gap-4 lg:gap-6 ${
+                projectsPerSlide === 3
+                  ? "grid-cols-1 lg:grid-cols-3"
+                  : "grid-cols-1"
+              } min-h-[600px] lg:min-h-[800px]`}
+              initial={{ opacity: 0, x: 100 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -100 }}
+              transition={{ duration: 0.5, ease: "easeInOut" }}
+            >
+              {getCurrentSlideProjects().map((project, index) => (
+                <div key={`${current}-${project.id}`} className="h-full">
+                  <ProjectSlide
+                    project={project}
+                    index={index}
+                    isActive={true}
+                  />
+                </div>
+              ))}
+            </motion.div>
+          </AnimatePresence>
         </div>
 
-        {/* Navigation Controls - Only show if more than 1 project */}
-        {projects.length > 1 && (
+        {/* Navigation Controls - Only show if more than 1 slide */}
+        {totalSlides > 1 && (
           <motion.div
-            className="flex justify-center items-center sm:mt-16 gap-4"
+            className="flex justify-center items-center mt-8 lg:mt-16 gap-4"
             initial={{ y: 50, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.5 }}
           >
             <CarouselControl
               type="previous"
-              title="Projet précédent"
+              title="Projets précédents"
               handleClick={handlePreviousClick}
             />
 
             {/* Indicators */}
-            <div className="flex space-x-3">
-              {projects.map((_, index) => (
+            <div className="flex space-x-2 lg:space-x-3">
+              {Array.from({ length: totalSlides }, (_, index) => (
                 <motion.button
                   key={index}
                   className={`h-2 rounded-full transition-all duration-300 ${
                     index === current
-                      ? "bg-purple-500 w-8"
+                      ? "bg-purple-500 w-6 lg:w-8"
                       : "bg-white/30 hover:bg-white/50 w-2"
                   }`}
                   onClick={() => setCurrent(index)}
@@ -386,7 +415,7 @@ const RecentProjects = () => {
 
             <CarouselControl
               type="next"
-              title="Projet suivant"
+              title="Projets suivants"
               handleClick={handleNextClick}
             />
           </motion.div>
@@ -394,13 +423,17 @@ const RecentProjects = () => {
 
         {/* Project Counter */}
         <motion.div
-          className="text-center mt-8"
+          className="text-center mt-6 lg:mt-8"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.7 }}
         >
           <span className="text-white/60 text-sm font-medium">
-            {current + 1} / {projects.length}
+            {projectsPerSlide === 3
+              ? `Slide ${current + 1} / ${totalSlides} (${
+                  projects.length
+                } projets)`
+              : `${current + 1} / ${projects.length}`}
           </span>
         </motion.div>
       </div>
