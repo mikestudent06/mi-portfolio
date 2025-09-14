@@ -67,9 +67,9 @@ const Hero = () => {
   };
 
   return (
-    <div className="relative w-full flex justify-between items-center h-screen">
+    <div className="relative pt-16  w-full flex justify-between items-center h-screen">
       {/* Hero Content */}
-      <div className="relative h-full w-full flex flex-col-reverse lg:flex-row justify-center items-center px-6 pb-32">
+      <div className="relative h-full w-full flex flex-col-reverse lg:flex-row justify-center items-center px-6 ">
         {/* Section texte */}
         <motion.div
           className="w-1/2 flex flex-col justify-center items-center text-center"

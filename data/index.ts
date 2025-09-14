@@ -149,6 +149,7 @@ export const skills: Skill[] = [
   { title: "CSS3", img: "/css.svg", category: "Frontend" },
   { title: "Tailwind CSS", img: "/tail.svg", category: "Frontend" },
   { title: "JavaScript", img: "/javascript.svg", category: "Frontend" },
+  { title: "Wordpress", img: "/wp.svg", category: "Frontend" },
   { title: "TypeScript", img: "/ts.svg", category: "Frontend" },
   { title: "React", img: "/re.svg", category: "Frontend" },
   { title: "Next.js", img: "/nextjs.svg", category: "Frontend" },
@@ -159,7 +160,7 @@ export const skills: Skill[] = [
   { title: "React Native", img: "/react-native.svg", category: "Mobile" },
 
   // Backend
-  { title: "Node.js", img: "/nodejs.svg", category: "Backend" },
+  { title: "Node.js", img: "/node.svg", category: "Backend" },
   { title: "Express.js", img: "/express.svg", category: "Backend" },
   { title: "NestJS", img: "/nestjs.svg", category: "Backend" },
   { title: "Python", img: "/python.svg", category: "Backend" },
@@ -244,23 +245,16 @@ export const testimonials: Testimonial[] = [
   },
   {
     quote:
-      "La collaboration avec Michel MOUHANI a été fluide et enrichissante. Son approche professionnelle et sa capacité à résoudre les défis techniques en un temps record sont impressionnantes. Grâce à son travail, notre plateforme a gagné en performance et en attractivité. Un partenaire fiable pour tout projet ambitieux.",
-    name: "Jean-Luc Moreau",
-    title: "CEO de NovaTech Solutions",
+      "La collaboration avec Michel MOUHANI a été fluide et enrichissante. Grâce à son travail, notre plateforme a un design moderne et attrayant. Un partenaire fiable pour tout projet ambitieux.",
+    name: "Ruben KIMBEMBE",
+    title: "CEO de KM Dreams",
     img: "/user.png",
   },
   {
     quote:
-      "Michel MOUHANI a transformé notre site web en une vitrine moderne et dynamique. Son écoute, son expertise technique et son engagement à fournir un travail de qualité sont remarquables. Travailler avec lui a été un vrai plaisir, et je n'hésiterai pas à refaire appel à ses services.",
-    name: "Catherine Dubois",
-    title: "Directrice Marketing chez Élan Créatif",
-    img: "/user.png",
-  },
-  {
-    quote:
-      "Michel MOUHANI a été un atout précieux pour notre projet. Il a su nous guider avec des recommandations pertinentes et a livré un travail impeccable dans des délais serrés. Si vous recherchez un expert fiable et talentueux, Michel est la personne qu'il vous faut.",
-    name: "Thomas Garnier",
-    title: "Responsable IT chez SoftWave Industries",
+      "Michel MOUHANI a fait preuve d'un professionnalisme exemplaire tout au long de notre collaboration. Sa capacité à transformer des idées complexes en solutions simples et efficaces est impressionnante. Je suis très satisfait du résultat final et je n'hésiterai pas à faire appel à lui pour de futurs projets.",
+    name: "Paul MOUKALA",
+    title: "CEO de Cogym",
     img: "/user.png",
   },
 ];
@@ -301,31 +295,60 @@ export const companies: Company[] = [
 export const workExperience: WorkExperience[] = [
   {
     id: 1,
-    title: "Stagiaire Ingénieur Frontend",
-    desc: "A aidé au développement d'une plateforme web utilisant React.js, améliorant l'interactivité.",
+    title: "Développeur Frontend",
+    desc: "A aidé au développement de plusieurs solutions web au sein de Ginov et en freelance utilisant React.js et Vue.js, améliorant l'interactivité.",
     className: "md:col-span-2",
     thumbnail: "/exp1.svg",
   },
   {
     id: 2,
-    title: "Développeur d'App Mobile",
-    desc: "Conçu et développé une application mobile pour les plateformes iOS et Android en utilisant React Native.",
+    title: "Développeur Frontend Vuejs",
+    desc: "A contribué au développement d'une application de gestion des calendriers en collaboration avec l'entreprise Française Interstis en utilisant Vue.js pour une expérience utilisateur fluide.",
     className: "md:col-span-2",
     thumbnail: "/exp2.svg",
   },
   {
     id: 3,
+    title: "Développeur Frontend Reactjs",
+    desc: "A contribué au développement d'une application de gestions de devis et factures en collaboration avec l'entreprise Française Mediasoft en utilisant React.js.",
+    className: "md:col-span-2",
+    thumbnail: "/exp2.svg",
+  },
+
+  {
+    id: 4,
+    title: "Développeur Backend",
+    desc: "Développé l'API complète d'une application de chat en temps réel au sein de Ginov, utilisant Nest.js et Socket.io.",
+    className: "md:col-span-2",
+    thumbnail: "/exp2.svg",
+  },
+  {
+    id: 5,
+    title: "Développeur d'App Mobile",
+    desc: "Conçu et développé des applications mobiles pour les plateformes iOS et Android en utilisant React Native.",
+    className: "md:col-span-2",
+    thumbnail: "/exp2.svg",
+  },
+  {
+    id: 6,
     title: "Projet de Développement Site web",
     desc: "Dirigé le développement d'un site web pour un client, depuis le concept initial jusqu'au déploiement sur le net.",
     className: "md:col-span-2",
     thumbnail: "/exp3.svg",
   },
   {
-    id: 4,
+    id: 7,
     title: "Lead Développeur Frontend",
-    desc: "Développé et maintenu des fonctionnalités orientées utilisateur en utilisant les technologies frontend modernes.",
+    desc: "Supervisé une équipe de développeurs frontend pour créer une application web complexe avec React.js.",
     className: "md:col-span-2",
     thumbnail: "/exp4.svg",
+  },
+  {
+    id: 8,
+    title: "Développeur Full-Stack",
+    desc: "Contribué au développement complet d'une application web, gérant à la fois le frontend et le backend.",
+    className: "md:col-span-2",
+    thumbnail: "/exp1.svg",
   },
 ];
 
